@@ -4,23 +4,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-
-// using(var sr = new StreamReader(filePath, Encoding.UTF8))
-// {
-
-//     var line = sr.ReadLine();
-//     var bytes = Encoding.UTF8.GetBytes(line);
-
-//     var emoji  = Encoding.UTF8.GetBytes("😀");
-
-//     foreach(var b in bytes)
-//         System.Console.Write(b + " ");
-
-//     foreach(var b in emoji)
-//         System.Console.Write(b + " ");
-// }
-
-
 var commandSheet = new Dictionary<byte[], byte>()
 {
     { "✍".ExtractBytes(), 0 },
@@ -59,16 +42,9 @@ using (var sr = new StreamReader(filePath))
 
 void HandlePrint(string[] arg)
 {
-    int size = arg.Sum(s => s.Length);
+    var temp = string.Join(' ', arg);
 
-    var byteArr = Encoding.ASCII.GetBytes(arg[0]);
-
-    foreach(var str in arg.Skip(1))
-    {
-        var bt = Encoding.ASCII.GetBytes(str);
-        byteArr = byteArr.Concat(bt).ToArray();
-    }
-
+    var byteArr = Encoding.ASCII.GetBytes(temp);
     data.Add(byteArr);
 
     string cmd = $"{0}x{commands.Count}";
