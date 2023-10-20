@@ -18,7 +18,7 @@ command.forEach(element => {
 
     if (update[0] == 0) {
         asciiString = Buffer.from(variable[paraInt].split(' ')).toString('ascii');
-        console.log("print:" + asciiString)
+        console.log(asciiString)
     }
 
     else if (update[0] == 1) {

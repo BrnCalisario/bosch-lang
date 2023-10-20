@@ -33,7 +33,7 @@ using (var sr = new StreamReader(filePath))
 
         if (!commandSheet.ContainsByteKey(command, out byte? code))
         {
-            throw new Exception("Erro no comando");
+            throw new Exception("Emojor: Comando inválido");
         }
 
         var cmdArgs = splited.Skip(1).ToArray();
@@ -72,7 +72,12 @@ void HandleSum(string[] args)
     for (int i = 0; i < args.Length; i++)
     {
         if (!int.TryParse(args[i], out _))
-            throw new Exception("Parâmetro não é número");
+        {
+            Console.WriteLine("Emojor: Parâmetro não é número");
+            throw new Exception();
+        }    
+            
+        
 
         cmd += data.Count + "e";
         data.Add(Encoding.ASCII.GetBytes(args[i]));

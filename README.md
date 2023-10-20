@@ -1,5 +1,6 @@
 # bosch-lang
 
+- Para abrir aba de emojis, Win + Ç
 
 ## Comandos
 
@@ -10,7 +11,7 @@
     ✍ "Hello World"
 
 - ➕ : Soma dos valores
-    - Parametro: Soma de números inteiros
+    - Parametro: Soma de números inteiros ( Quantos Quiser )
     ### Exemplo
     
     ➕ 5 2 4
