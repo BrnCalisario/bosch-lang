@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Microsoft.VisualBasic;
 
 var commandSheet = new Dictionary<byte[], byte>()
 {
     { "✍".ExtractBytes(), 0 },
+    { "➕".ExtractBytes(), 1 },
 };
 
 List<string> commands = new();
@@ -28,10 +30,15 @@ using (var sr = new StreamReader(filePath))
             throw new Exception("Erro no comando");
         }
         
+        var cmdArgs = splited.Skip(1).ToArray();
+
         switch (code)
         {
             case 0:
-                HandlePrint(splited.Skip(1).ToArray());
+                HandlePrint(cmdArgs);
+                break;
+            case 1:
+                HandleSum(cmdArgs);
                 break;
 
             default:
@@ -40,9 +47,9 @@ using (var sr = new StreamReader(filePath))
     }
 }
 
-void HandlePrint(string[] arg)
+void HandlePrint(string[] args)
 {
-    var temp = string.Join(' ', arg);
+    var temp = string.Join(' ', args);
 
     var byteArr = Encoding.ASCII.GetBytes(temp);
     data.Add(byteArr);
@@ -51,6 +58,31 @@ void HandlePrint(string[] arg)
 
     commands.Add(cmd);
 }
+
+
+void HandleSum(string[] args)
+{
+    // int[] nums = new int[args.Length];
+
+    for(int i = 0; i < args.Length; i++)
+    {
+        if(!int.TryParse(args[i], out _))
+            throw new Exception("Parâmetro não é número");
+
+        data.Add(Encoding.ASCII.GetBytes(args[i]));
+    }
+
+    string cmd = $"{1}x";
+
+    for(int i = 0; i < args.Length; i++)
+    {
+        cmd += (data.Count + (i - 3)) + "e";
+    }
+    cmd = cmd.Remove(cmd.Length -1);
+
+    commands.Add(cmd);
+}
+
 
 using (var sw = new StreamWriter("compiled.emojo"))
 {
