@@ -1,4 +1,4 @@
-- Definir tema da linguagem
+- Definir tema da linguagem = emoji
 - Repositorio
 - Compilar
 - - Tokenização
@@ -9,8 +9,8 @@
 
 - Pensar em comandos
 - - Exemplos : 
-	print, comparador, if, variavel,+ - * /, loop
+	print, comparador, if, variavel,+ - * /, loop = OK
 
 -- Definir tipos
- -- inteiro, string, char, float, bool
+ -- inteiro, string, char, float, bool = OK
 
