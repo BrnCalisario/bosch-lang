@@ -1,7 +1,6 @@
-const { Console } = require('console');
 const fs = require('fs');
 
-const data = fs.readFileSync('./arquivo.emojo', 'utf8');
+const data = fs.readFileSync('../compiled.emojo', 'utf8');
 
 var asciiString;
 
@@ -30,7 +29,7 @@ command.forEach(element => {
 
             let buf = Buffer.from(variable[index].split(' '), 'ascii')
             let banana = buf.toString('ascii')
-
+            
             sum += parseInt(String(banana).replace(/[^\w\s]/g, ""))
         })
         console.log(sum)

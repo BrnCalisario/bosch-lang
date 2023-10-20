@@ -9,6 +9,18 @@
     
     ✍ "Hello World"
 
+    "Retorna" "Hello World "
+
+- ➕ : Retorna a soma de números inteiros
+    - Parametro: Números inteiros
+
+    ### Exemplo
+    
+    ➕ 1 2 3 
+    
+    "Retorna" 3
+
+
 - 🤔 : IF
     - Parametro: Comparação de Parametros
     ### Exemplo
