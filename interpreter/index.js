@@ -19,7 +19,7 @@ command.forEach(element => {
 
     if (update[0] == 0) {
         asciiString = Buffer.from(variable[paraInt].split(' ')).toString('ascii');
-        console.log(asciiString)
+        console.log("print:" + asciiString)
     }
 
     else if (update[0] == 1) {
@@ -33,7 +33,7 @@ command.forEach(element => {
 
             sum += parseInt(String(banana).replace(/[^\w\s]/g, ""))
         })
-        console.log(sum)
+        console.log("Soma:" + sum)
     }
 
     else {
