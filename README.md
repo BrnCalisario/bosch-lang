@@ -24,6 +24,7 @@
 
 - Caso o primeiro valor não seja um dos simbolos acima, dará erro de compilação
 - Caso não sejam informados parametros apos o Emoji, estourará erro
+- Caso o parametro seja grudado no simbolo, dará erro
       
 
     
