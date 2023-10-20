@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 
 
@@ -28,9 +29,6 @@ var commandSheet = new Dictionary<byte[], byte>()
 List<string> commands = new();
 List<byte[]> data = new();
 
-int count = 0;
-
-
 string filePath = args[0];
 
 using (var sr = new StreamReader(filePath))
@@ -50,7 +48,7 @@ using (var sr = new StreamReader(filePath))
         switch (code)
         {
             case 0:
-                HandlePrint(splited[1]);
+                HandlePrint(splited.Skip(1).ToArray());
                 break;
 
             default:
@@ -59,10 +57,19 @@ using (var sr = new StreamReader(filePath))
     }
 }
 
-void HandlePrint(string arg)
+void HandlePrint(string[] arg)
 {
-    byte[] d = Encoding.ASCII.GetBytes(arg);
-    data.Add(d);
+    int size = arg.Sum(s => s.Length);
+
+    var byteArr = Encoding.ASCII.GetBytes(arg[0]);
+
+    foreach(var str in arg.Skip(1))
+    {
+        var bt = Encoding.ASCII.GetBytes(str);
+        byteArr = byteArr.Concat(bt).ToArray();
+    }
+
+    data.Add(byteArr);
 
     string cmd = $"{0}x{commands.Count}";
 
